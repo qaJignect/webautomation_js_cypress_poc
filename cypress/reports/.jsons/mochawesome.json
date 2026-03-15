@@ -1,0 +1,114 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-03-15T16:10:43.068Z",
+    "end": "2026-03-15T16:16:51.504Z",
+    "duration": 368436,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "889db3e1-30c3-44df-85f5-c76ac07c0ff6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\login\\loginTest.cy.js",
+      "file": "cypress\\e2e\\login\\loginTest.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cf8fb037-f2d3-4181-9305-188f2f8e4f7b",
+          "title": "OrangeHRM Login Scenarios",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify that users can log in successfully with valid credentials and receive proper error messages with invalid credentials",
+              "fullTitle": "OrangeHRM Login Scenarios Verify that users can log in successfully with valid credentials and receive proper error messages with invalid credentials",
+              "timedOut": null,
+              "duration": 150165,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('Navigating to the login page...');\n_loginPage.default.visitLoginPage();\ncy.log('Verify Login page should be displayed with correct details.');\n_loginPage.default.getLoginTitle().should('eq', _commonTexts.default.loginTitle);\n_loginPage.default.isCompanyLogoDisplayed().should('be.true', 'Company logo is displayed');\n_loginPage.default.isUsernameFieldDisplayed().should('be.true', 'Username field is displayed');\n_loginPage.default.isPasswordFieldDisplayed().should('be.true', 'Password field is displayed');\n_loginPage.default.isLoginButtonDisplayed().should('be.true', 'Login button is displayed');\n_loginPage.default.isForgotPasswordLinkDisplayed().should('be.true', 'Forgot password link is displayed');\ncy.log('Login with invalid credentials');\n_loginPage.default.enterLoginDetails(invalidLoginData);\n_loginPage.default.clickOnLoginButton(false);\n_loginPage.default.getLoginErrorMessage().should('eq', _commonTexts.default.invalidCredential);\ncy.log('Login with valid credentials');\n_loginPage.default.enterLoginDetails(validLoginData);\n_loginPage.default.clickOnLoginButton();\ncy.log('Verify url and dashboard title after login.');\ncy.url().should('eq', _applicationUrls.default.dashboard);\n_dashboardPage.default.getDashboardTitle().should('eq', _commonTexts.default.dashboardTitle);\ncy.log('Clicks on Account Menu tab and Logout button');\n_dashboardPage.default.logout();\ncy.log('Verify login page title after logout');\n_loginPage.default.getLoginTitle().should('eq', _commonTexts.default.loginTitle);",
+              "err": {
+                "message": "CypressError: `cy.screenshot()` timed out waiting `30000ms` to complete.",
+                "estack": "CypressError: `cy.screenshot()` timed out waiting `30000ms` to complete.\n    at https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:137760:73\n    at tryCatcher (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1777:23)\n    at https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:4156:41\n    at tryCatcher (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://opensource-demo.orangehrmlive.com/__cypress/runner/cypress_runner.js:2256:14)",
+                "diff": null
+              },
+              "uuid": "dc481e51-ba9b-4072-8f70-8370b4c31a4f",
+              "parentUUID": "cf8fb037-f2d3-4181-9305-188f2f8e4f7b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "dc481e51-ba9b-4072-8f70-8370b4c31a4f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 150165,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Cypress Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveJson": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

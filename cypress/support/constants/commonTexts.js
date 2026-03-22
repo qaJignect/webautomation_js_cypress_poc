@@ -22,10 +22,24 @@ export const commonTexts = {
 
   //UserManagement
   submitButton: `Submit`,
+  save: `Save`,
+
+  //Admin
+  searching: `Searching....`,
+
+  //PIM
+  employeeListTab: `Employee List`,
+  addEmployeeTab: `Add Employee`,
+
+  //Add Employee
+  userNameField: `Username`,
+  passwordField: `Password`,
+  confirmPassword: `Confirm Password`,
 
   //Waits
   oneSecond: `1000`,
   twoSeconds: `2000`,
+  tenSecond: `10000`,
 }
 
 export default commonTexts;

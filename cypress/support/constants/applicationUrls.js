@@ -9,7 +9,13 @@ export const ApplicationUrls = {
   subUnits: `${baseURL}/api/v2/dashboard/employees/subunit`,
 
   //Dashboard
-  dashboard: `${baseURL}/dashboard/index`
+  dashboard: `${baseURL}/dashboard/index`,
+
+  //Admin
+  saveSystemUser: `${baseURL}/admin/saveSystemUser`,
+
+  //employees
+  getEmployee: `${baseURL}/api/v2/pim/employees`
 
 }
 export default ApplicationUrls;

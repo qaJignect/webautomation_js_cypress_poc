@@ -1,4 +1,4 @@
-import AdminUserDetails from '../dataObject/AdminUserData';
+import AdminUserDetails from '../dataObject/adminUserDetails';
 
 class AdminUserDataFactory {
   static getAdminUserData() {

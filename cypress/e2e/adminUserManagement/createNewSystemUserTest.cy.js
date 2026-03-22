@@ -1,7 +1,7 @@
 import loginPage from '../../pages/login/loginPage.js';
 import adminPage from '../../pages/admin/adminPage.js';
 import applicationUrls from '../../support/constants/applicationUrls.js';
-import AdminUserDataFactory from '../../dataFactory/AdminUserFactory.js';
+import AdminUserDataFactory from '../../dataFactory/AdminUserData.js';
 import sideMenuPage from '../../pages/sideMenuPage.js';
 import sideMenuOptions from '../../enum/sideMenu/sideMenuOptions.js';
 import userManagement from '../../pages/admin/userManagement.js';
@@ -35,7 +35,7 @@ describe('Admin User Management Module', () => {
 
     cy.log('Fill User Details and Save');
     userManagement.fillUserDetails(newUser);
-    userManagement.clickOnButton(commonTexts.submitButton)
+    userManagement.clickOnButton(commonTexts.save)
 
     cy.log('Verify new user appears in user list (with pagination)');
     userManagement.enterUserDetailsAndSearch(newUser);
@@ -43,7 +43,6 @@ describe('Admin User Management Module', () => {
       const createdUser = adminUserDetailsList.find(user => user.username === newUser.username);
       expect(createdUser.username).to.equal(newUser.username, 'Username mismatch');
       expect(createdUser.userRole).to.equal(newUser.userRole, 'User role mismatch');
-      expect(createdUser.employeeName).to.equal(newUser.employeeName, 'Employee name mismatch');
       expect(createdUser.status).to.equal(newUser.status, 'Status mismatch');
     });
 

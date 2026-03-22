@@ -1,10 +1,10 @@
 import commonTexts from "../../support/constants/commonTexts"
-import AdminUserDetails from "../../dataObject/AdminUserData"
-import AdminUserDetailsList from "../../dataObject/AdminUserDetailsList"
+import AdminUserDetails from "../../dataObject/adminUserDetails"
 import BasePage from "../base/basePage"
+import AdminUserDetailsList from "../../dataObject/AdminUserDetailsList"
 
 const systemUsersTitle = '.oxd-table-filter-title'
-const usernameInput = '.oxd-form input.oxd-input'
+const usernameInput = 'input.oxd-input'
 const userRoleSelect = '.oxd-grid-item:first-child .oxd-select-text'
 const userRoleDropdownOption = (role) => `div[class*='oxd-select-option'] span:contains("${role}")`
 const employeeNameInput = '.oxd-autocomplete-text-input input'
@@ -15,16 +15,9 @@ const submitButton = (buttonName) => `.oxd-form-actions button[type="submit"]:co
 const addButton = '.orangehrm-header-container button.oxd-button--secondary'
 const tableCell = '.oxd-table-cell'
 const tableRow = '.oxd-table-card'
-// const tableHeaderCheckbox = '.oxd-table-header input[type="checkbox"]'
-// const tableBodyCheckbox = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) input[type="checkbox"]`
-// const usernameCell = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) .oxd-table-cell:nth-child(2)`
-// const userRoleCell = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) .oxd-table-cell:nth-child(3)`
-// const employeeNameCell = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) .oxd-table-cell:nth-child(4)`
-// const statusCell = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) .oxd-table-cell:nth-child(5)`
-// const deleteButton = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) .oxd-table-cell-actions .bi-trash`
-// const editButton = (rowIndex) => `.oxd-table-card:nth-child(${rowIndex}) .oxd-table-cell-actions .bi-pencil-fill`
-
-const employeeNameDropdownbOption= `div[role="listbox"]`
+const searching = `div[role="listbox"] div[role="option"]:contains(${commonTexts.searching})`
+const parentInputField = `.oxd-input-group`
+const employeeNameDropdownbOption = `div[role="listbox"]`
 const passwordField = `input[type="password"]`
 
 
@@ -35,11 +28,11 @@ class UserManagement extends BasePage {
     }
 
     enterUsername(username) {
-         cy.get(labelField('Username')).closest(usernameInput).clear().type(username)
+        cy.get(labelField('Username')).parents(parentInputField).find(usernameInput).clear().type(username)
     }
 
     enterPassword(fieldName, password) {
-        cy.get(labelField(fieldName)).closest(passwordField).clear().type(password)
+        cy.contains(parentInputField, fieldName).find(passwordField).clear().type(password)
     }
 
     selectUserRole(role) {
@@ -48,13 +41,14 @@ class UserManagement extends BasePage {
     }
 
     enterAndSelectEmployeeName(name) {
-        cy.get(employeeNameInput).clear().type(name).wait(commonTexts.twoSeconds)
-         cy.get(employeeNameDropdownbOption, { timeout: 10000 }).first().click()
+        cy.get(employeeNameInput).clear().type(name)
+        cy.waitUntilElementToBeInvisible(searching)
+        cy.get(employeeNameDropdownbOption, { timeout: 10000 }).first().click()
     }
 
     selectStatus(status) {
-        cy.get(labelField('Status')).closest(selectDropdown).click().wait(commonTexts.oneSecond)
-        cy.get(userRoleDropdownOption(status)).click()
+        cy.get(labelField('Status')).parents(parentInputField).find(selectDropdown).click();
+        cy.get(userRoleDropdownOption(status)).click();
     }
 
     clickResetButton() {
@@ -88,7 +82,7 @@ class UserManagement extends BasePage {
 
     fillUserDetails(user) {
         this.selectUserRole(user.userRole);
-        this.enterAndSelectEmployeeName(user.employeeName);       
+        this.enterAndSelectEmployeeName(user.employeeName);
         this.selectStatus(user.status);
         this.enterUsername(user.username);
         this.enterPassword('Password', user.password)
@@ -97,7 +91,7 @@ class UserManagement extends BasePage {
 
     enterUserDetailsAndSearch(user) {
         this.enterUsername(user.username);
-        this.selectUserRole(user.userRole); 
+        this.selectUserRole(user.userRole);
         this.selectStatus(user.status);
         this.clickOnButton('Search')
         cy.waitUntilElementToBeInvisible(this.spinner)

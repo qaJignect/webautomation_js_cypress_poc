@@ -9,7 +9,6 @@ const forgotPasswordLink = `div[class*='orangehrm-login-forgot'] p:contains('For
 const companyLogo = `div[class='orangehrm-login-branding'] img`
 const userAccountArea = `div[class*='header-userarea'] .oxd-userdropdown`
 const dropdownMenu = (option) => `.oxd-dropdown-menu a:contains('${option}')`
-const dashboardHeader = `div[class*='orangehrm-upgrade-layout'] div[class*="header-title"] h6`
 
 class LoginPage {
 
@@ -74,10 +73,6 @@ class LoginPage {
   clickOnLogoutButton() {
     cy.get(userAccountArea).click();
     cy.get(dropdownMenu('Logout')).click();
-  }
-
-  getDashboardHeader() {
-    return cy.get(dashboardHeader);
   }
 }
 export default new LoginPage();

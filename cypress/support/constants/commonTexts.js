@@ -36,10 +36,25 @@ export const commonTexts = {
   passwordField: `Password`,
   confirmPassword: `Confirm Password`,
 
+  //PersonalDetails
+  personalDetails: `Personal Details`,
+  male: `Male`,
+  female: `Female`,
+
+  //Toast Message
+  toastSuccessTitle: `Success`,
+  toastSuccessMessage: `Successfully Updated`,
+
+  //Personal Details
+  drivingLicenceField: `Driver's License Number`,
+
   //Waits
   oneSecond: `1000`,
   twoSeconds: `2000`,
   tenSecond: `10000`,
+
+  //My Info
+  changeProfilePicture: `Change Profile Picture`,
 }
 
 export default commonTexts;

@@ -15,7 +15,13 @@ export const ApplicationUrls = {
   saveSystemUser: `${baseURL}/admin/saveSystemUser`,
 
   //employees
-  getEmployee: `${baseURL}/api/v2/pim/employees`
+  getEmployee: `${baseURL}/api/v2/pim/employees`,
+
+  //PersonalDetails
+  personalDetails: `${baseURL}/api/v2/pim/employees/7/personal-details`,
+
+  //MyInfo
+  myInfoPage: `${baseURL}/pim/viewPersonalDetails/empNumber/7`
 
 }
 export default ApplicationUrls;
